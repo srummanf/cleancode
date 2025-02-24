@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
+
+@font-face {
+  font-family: "Minecraft";
+  src: url("../node_modules//pixel-retroui/fonts/Minecraft.otf")
+    format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MinecraftBold";
+  src: url("../node_modules//pixel-retroui/fonts/Minecraft-Bold.otf")
+    format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+:root {
+  --bg-color: #fefcd0;
+  --text-color: #000000;
+  --border-color: #000000;
+  --shadow-color: #c381b5;
+}
+
+.theme-muddy {
+  --bg-color: #ddceb4;
+  --text-color: #30210b;
+  --border-color: #30210b;
+  --shadow-color: #30210b;
+}
+
+.theme-pop {
+  --bg-color: #fefcd0;
+  --text-color: #000000;
+  --border-color: #000000;
+  --shadow-color: #c381b5;
+}
+
+.theme-light {
+  --bg-color: #fffefd;
+  --text-color: #000000;
+  --border-color: #000000;
+  --shadow-color: #000000;
+}
+
+.theme-dark {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --border-color: #ffffff;
+  --shadow-color: #ffffff;
+}
