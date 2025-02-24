@@ -154,7 +154,7 @@ export default function Home() {
           <div className="relative mb-10">
             <Image
               src="/sparkle.png"
-              className={`absolute -top-20 md:-top-40 right-0 md:right-10 w-12 h-12 md:w-20 md:h-20`}
+              className={`absolute -top-20 md:-top-32 right-0 md:right-10 w-12 h-12 md:w-20 md:h-20`}
               alt="sparkle"
               width={80}
               height={80}
@@ -170,8 +170,8 @@ export default function Home() {
               Guide on <br /> Clean Code
             </h1>
             <p className={`${styles.subtitleSize} font-minecraft mb-8`}>
-              The Art of <span className="font-minecraft-bold">Writing</span>{" "}
-              Beautiful Software
+              The Art of <span className="font-minecraft-bold">Writing Beautiful Software</span>{" "}
+              
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4  justify-center">
@@ -320,7 +320,7 @@ export default function Home() {
                 }}
               >
                 <Bubble direction={"right"} bg="#fefcd0">
-                  Exactlt! Hacknight rocks!
+                  Exactly! Hacknight rocks!
                 </Bubble>
               </div>
             </>
