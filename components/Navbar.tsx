@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <Image src="/logo2.png" alt="logo" width={55} height={55} />
+              <Image src="/logo4-removebg-preview.png" alt="logo" width={55} height={55} />
               <h1 className="font-minecraft-bold ml-2 text-2xl">
                 Welcome to HackNight'25
               </h1>
