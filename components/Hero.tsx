@@ -117,7 +117,7 @@ export default function Home() {
   );
   const router = useRouter();
 
-  const [progress, setProgress] = useState(3);
+  const [progress, setProgress] = useState(5);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -126,7 +126,7 @@ export default function Home() {
           clearInterval(interval); // Stop the interval when reaching 100
           return 100;
         }
-        return prev + 3; // Increase smoothly
+        return prev + 5; // Increase smoothly
       });
     }, 1200);
 

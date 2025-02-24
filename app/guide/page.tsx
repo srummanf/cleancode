@@ -89,31 +89,27 @@ if (condition) {
           into functions, methods, or classes to promote code reusability.
           <div className="flex gap-x-6">
             <CopyableCode
-              code={`❌
-              function calculateBookPrice(quantity, price) {
-    return quantity * price;
+              code={`// ❌ Violates DRY
+function bookPrice(q, p) {
+    return q * p;
 }
 
-function calculateLaptopPrice(quantity, price) {
-    return quantity * price;
-}`}
+function laptopPrice(q, p) {
+    return q * p;
+}
+
+console.log(bookPrice(3, 25));
+console.log(laptopPrice(2, 800)); `}
               className="w-full md:w-1/2 mt-3 md:mt-5"
             />
             <CopyableCode
-              code={`✅
-              function calculateItemPrice(quantity, price) {
-    return quantity * price;
+              code={`// ✅ Follows DRY
+function price(q, p) {
+    return q * p;
 }
 
-const bookQuantity = 3;
-const bookPrice = 25;
-
-const laptopQuantity = 2;
-const laptopPrice = 800;
-
-const bookTotalPrice = calculateItemPrice(bookQuantity, bookPrice);
-const laptopTotalPrice = calculateItemPrice(laptopQuantity, laptopPrice);
-`}
+console.log(price(3, 25));  // Book price
+console.log(price(2, 800)); // Laptop price`}
               className="w-full md:w-1/2 mt-3 md:mt-5"
             />
           </div>
@@ -223,13 +219,12 @@ try {
 try {
     result = divide(x, y);
 } catch (error) {
-    if (error instanceof ZeroDivisionError) {
-        console.error("Division by zero error:", error.message);
-    } else if (error instanceof ValueError) {
-        console.error("Invalid input:", error.message);
-    } else {
-        console.error("An unexpected error occurred:", error.message);
-    }
+    console.error(
+        error instanceof ZeroDivisionError ? "Division by zero:" :
+        error instanceof ValueError ? "Invalid input:" : 
+        "Unexpected error:", 
+        error.message
+    );
 }
 `}
               className="w-full md:w-1/2 mt-3 md:mt-5"
@@ -248,15 +243,9 @@ try {
           evolves. Suppose you have a function that calculates the total price
           of items in a shopping cart with a fixed discount percentage:
           <CopyableCode
-            code={`function calculateTotalPrice(cartItems) {
-    let totalPrice = 0;
-    for (const item of cartItems) {
-        totalPrice += item.price;
-    }
-    return totalPrice - (totalPrice * 0.1); // Apply a 10% discount
-}
-
-`}
+            code={`function calcTotal(cart) {
+    return cart.reduce((sum, item) => sum + item.price, 0) * 0.9;
+}`}
             className="w-full md:w-1/2 mt-3 md:mt-5"
           />
           <p className="mt-3">
@@ -266,20 +255,10 @@ try {
             make it more flexible, you can introduce a discount parameter:
           </p>
           <CopyableCode
-            code={`function calculateTotalPrice(cartItems, discountPercentage) {
-    if (discountPercentage < 0 || discountPercentage > 100) {
-        throw new Error("Discount percentage must be between 0 and 100.");
-    }
-
-    let totalPrice = 0;
-    for (const item of cartItems) {
-        totalPrice += item.price;
-    }
-
-    const discountAmount = (totalPrice * discountPercentage) / 100;
-    return totalPrice - discountAmount;
-}
-`}
+            code={`function calcTotal(cart, discount = 10) {
+    if (discount < 0 || discount > 100) throw new Error("Invalid discount!");
+    return cart.reduce((sum, item) => sum + item.price, 0) * (1 - discount / 100);
+}`}
             className="w-full md:w-1/2 mt-3 md:mt-5"
           />
         </>
@@ -510,9 +489,14 @@ try {
             <hr className="mt-6 mb-6 md:mt-10 md:mb-10 h-1" color="black" />
             {/* Clean Code Tips */}
             <div id="cleancodetips" className="mt-6 md:mt-10">
-              <h1 className="font-minecraft-bold text-2xl md:text-3xl mb-6">
-                Clean Code Tips
-              </h1>
+            <div className="flex items-center mb-8">
+                <div className="hidden md:flex bg-black text-white rounded-full w-10 h-10 items-center justify-center mr-4 flex-shrink-0">
+                  2
+                </div>
+                <h1 className="font-minecraft-bold text-2xl md:text-3xl">
+                  Clean Code Tips
+                </h1>
+              </div>
               <div className=" space-y-8">
                 {troubleshootingItems.map((item, index) => (
                   <Card key={index} className="lg:w-1/2 overflow-hidden">
