@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import {
   Accordion,
@@ -115,6 +116,22 @@ export default function Home() {
     typeof window !== "undefined" ? window.innerWidth : 0
   );
   const router = useRouter();
+
+  const [progress, setProgress] = useState(3);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval); // Stop the interval when reaching 100
+          return 100;
+        }
+        return prev + 3; // Increase smoothly
+      });
+    }, 1200);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -294,8 +311,9 @@ export default function Home() {
                 }}
               >
                 <p className="text-center">How good is your code?</p>
-                <ProgressBar size="lg" progress={100} color="#c381b5" />
-                <p className="text-right">100%</p>
+                
+                <ProgressBar size="lg" progress={progress} color="#c381b5" />
+                <p className="text-right">{progress}%</p>
               </div>
 
               <div
@@ -432,7 +450,7 @@ export default function Home() {
                 }}
               >
                 <p className="text-center">How cute are you?</p>
-                <ProgressBar size="lg" progress={100} color="#c381b5" />
+                <ProgressBar size="lg" progress={progress} color="#c381b5" />
                 <p className="text-right">100%</p>
               </div>
 
