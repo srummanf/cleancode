@@ -275,7 +275,7 @@ export default function Home() {
               </div>
 
               <div
-                className="absolute top-1/4 left-0 transition-transform duration-300 hover:rotate-[5deg] pointer-events-auto"
+                className="z-10 absolute top-1/4 left-0 transition-transform duration-300 hover:rotate-[5deg] pointer-events-auto"
                 style={{
                   transform: `rotate(10deg) scale(${
                     windowWidth >= 1440 ? 0.9 : 0.8
