@@ -29,7 +29,7 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex items-center space-x-4">
           <a
-              href="https://hacknighthub.vercel.app/"
+              href="https://www.knightsden.xyz/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-minecraft hover:text-gray-600 px-3 py-2 rounded-md text-sm flex items-center"
